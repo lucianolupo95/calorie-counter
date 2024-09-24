@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CRUD App</title>
+  </head>
+  <body>
+    <h1>CRUD App</h1>
+    <div id="users"></div>
+    <button onclick="fetchItems()">Fetch Users</button>
+
+    <script>
+      async function fetchItems() {
+        const response = await fetch("http://127.0.0.1:8080/users");
+        const users = await response.json();
+        const usersDiv = document.getElementById("users");
+        usersDiv.innerHTML = JSON.stringify(users);
+      }
+    </script>
+  </body>
+</html>
