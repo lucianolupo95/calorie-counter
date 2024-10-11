@@ -20,8 +20,9 @@ var db *sql.DB
 func main() {
     var err error
     err = godotenv.Load()
+    fmt.Println("Esta funcionando!")
     if err != nil {
-        log.Fatal("Error cargando el archivo .env")
+        log.Fatal("Error cargando el archivo .env "+ err.Error())
     }
     dbType := os.Getenv("DB")
     dbName := os.Getenv("DB_NAME")
