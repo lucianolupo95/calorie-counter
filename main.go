@@ -22,7 +22,7 @@ func main() {
     err = godotenv.Load()
     fmt.Println("Esta funcionando!")
     if err != nil {
-        log.Fatal("Error cargando el archivo .env "+ err.Error())
+        fmt.Println("Error cargando el archivo .env "+ err.Error())
     }
     dbType := os.Getenv("DB")
     dbName := os.Getenv("DB_NAME")
