@@ -9,6 +9,7 @@ import (
 
 	"github.com/gorilla/mux"
 	_ "github.com/lib/pq"
+	"github.com/rs/cors"
 )
 
 
@@ -25,7 +26,14 @@ func main() {
     router := mux.NewRouter()
     router.HandleFunc("/env", getEnv).Methods("GET")
     router.HandleFunc("/health", health).Methods("GET")
-    log.Fatal(http.ListenAndServe("0.0.0.0:8080", router))
+	PORT := os.Getenv("PORT")
+	if PORT == "" {
+		PORT = "3000"
+	}
+	//Manejador de permisos para las transacciones, sin cors se revotarian las solicitudes externas
+	handler := cors.AllowAll().Handler(router)
+
+	log.Fatal(http.ListenAndServe(":"+PORT, handler))
 
 }
 
