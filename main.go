@@ -2,7 +2,6 @@ package main
 
 import (
 	"calorie-counter/routers"
-	"calorie-counter/services"
 	"log"
 
 	"github.com/joho/godotenv"
@@ -31,7 +30,7 @@ func loadEnv() {
 
 func main() {
 	loadEnv()
-	services.FoodServices.CreateFood()
+	// services.FoodServices.CreateFood()
 	routers.Routes()
 }
 
